@@ -8,8 +8,9 @@ phases:
       - dotnet build donuts/donuts.csproj
   post_build:
     commands:
-      - dotnet publish -r linux-x64 donuts/donuts.csproj
+      - dotnet publish -c Release -r linux-x64 donuts/donuts.csproj
 artifacts:  
   files:
-    - donuts/bin/Debug/net8.0/linux-x64/publish/**/*
+    - '**/*'
+  base-directory: donuts/bin/Release/net8.0/linux-x64/publish
   discard-paths: yes
