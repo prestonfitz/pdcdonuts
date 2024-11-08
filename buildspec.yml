@@ -5,10 +5,10 @@ phases:
       dotnet: 8.0
   build:
     commands:
-      - dotnet build src/WeatherForecast.csproj
+      - dotnet build src/donuts.csproj
   post_build:
     commands:
-      - dotnet publish -r linux-x64 src/WeatherForecast.csproj
+      - dotnet publish -r linux-x64 src/donuts.csproj
 artifacts:  
   files:
     - src/bin/Debug/net8.0/linux-x64/publish/**/*
