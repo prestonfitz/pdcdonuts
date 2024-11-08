@@ -5,12 +5,11 @@ phases:
       dotnet: 8.0
   build:
     commands:
-      - dotnet build donuts/donuts.csproj
+      - dotnet build src/WeatherForecast.csproj
   post_build:
     commands:
-      - dotnet publish -c Release -r linux-x64 donuts/donuts.csproj
+      - dotnet publish -r linux-x64 src/WeatherForecast.csproj
 artifacts:  
   files:
-    - '**/*'
-  base-directory: donuts/bin/Release/net8.0/linux-x64/publish
+    - src/bin/Debug/net8.0/linux-x64/publish/**/*
   discard-paths: yes
