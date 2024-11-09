@@ -1,0 +1,16 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      dotnet: 8.0
+  build:
+    commands:
+      - dotnet build donuts/donuts.csproj
+  post_build:
+    commands:
+      - dotnet publish -c Release -r linux-x64 donuts/donuts.csproj
+artifacts:
+  files:
+    - "**/*"
+  base-directory: donuts/bin/Release/net8.0/linux-x64/publish
+  discard-paths: yes
