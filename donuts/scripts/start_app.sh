@@ -1,2 +1,2 @@
-# start_app.sh
-systemctl start donuts.service
+systemctl enable website.service
+systemctl start website.service

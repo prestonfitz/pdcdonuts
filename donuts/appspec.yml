@@ -1,14 +1,17 @@
-﻿version: 0.0
+version: 0.0
 os: linux
 files:
-  - source: /
-    destination: /var/www/dotnet/
+  - source: donuts
+    destination: /var/www
+  - source: scripts/website.service
+    destination: /etc/systemd/system
 hooks:
+  ApplicationStop:
+    - location: scripts/stop_app.sh
+      timeout: 10
   BeforeInstall:
-    - location: scripts/stop_application.sh
-      timeout: 300
-      runas: root
-  AfterInstall:
-    - location: scripts/start_application.sh
-      timeout: 300
-      runas: root
+    - location: scripts/before-install.sh
+      timeout: 10
+  ApplicationStart:
+    - location: scripts/start_app.sh
+      timeout: 10
